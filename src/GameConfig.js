@@ -18,10 +18,10 @@ GameConfig.scaleMode ="fixedwidth";
 GameConfig.screenMode = "none";
 GameConfig.alignV = "top";
 GameConfig.alignH = "left";
-GameConfig.startScene = "loading.scene";
+GameConfig.startScene = "index.scene";
 GameConfig.sceneRoot = "";
 GameConfig.debug = false;
-GameConfig.stat = true;
+GameConfig.stat = false;
 GameConfig.physicsDebug = false;
 GameConfig.exportSceneToJson = true;
 

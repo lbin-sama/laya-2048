@@ -271,7 +271,10 @@
             return result;
         }
 
-        // 游戏结束
+        /**
+         * 游戏结束，
+         * 结束判断待完善
+         */
         gameOver() {
             this.isGameOver = true;
             Laya.Scene.open("gameOver.scene", false);
@@ -717,7 +720,8 @@
                 'res/image/game512.png',
                 'res/image/game1024.png',
                 'res/image/game2048.png',
-                'res/image/game4096.png'
+                'res/image/game4096.png',
+                './../common/main_bg.jpg'
             ];
             //加载
             Laya.loader.create(resArr, Laya.Handler.create(this, this.onLoaded), Laya.Handler.create(this, this.onLoading));
@@ -756,8 +760,13 @@
             this.progress.value = 0.98;
             console.log("加载结束", this.progress.value);
             this.progressText.text = '加载完毕，正在进入游戏';
-            
-            Laya.Scene.open("index.scene");
+
+
+            //预加载的东西太少，为了本地看效果延迟一秒，真实项目不需要延迟
+            Laya.timer.once(1000, this, () => {
+                //跳转到入口场景
+                Laya.Scene.open("index.scene");
+            });
         }
 
         onUpdate() {
@@ -796,10 +805,10 @@
     GameConfig.screenMode = "none";
     GameConfig.alignV = "top";
     GameConfig.alignH = "left";
-    GameConfig.startScene = "loading.scene";
+    GameConfig.startScene = "index.scene";
     GameConfig.sceneRoot = "";
     GameConfig.debug = false;
-    GameConfig.stat = true;
+    GameConfig.stat = false;
     GameConfig.physicsDebug = false;
     GameConfig.exportSceneToJson = true;
 

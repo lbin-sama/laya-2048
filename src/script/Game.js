@@ -240,7 +240,10 @@ export default class Game extends Laya.Script {
         return result;
     }
 
-    // 游戏结束
+    /**
+     * 游戏结束，
+     * 结束判断待完善
+     */
     gameOver() {
         this.isGameOver = true
         Laya.Scene.open("gameOver.scene", false)
