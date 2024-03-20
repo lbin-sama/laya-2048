@@ -245,9 +245,51 @@ export default class Game extends Laya.Script {
      * 结束判断待完善
      */
     gameOver() {
+        if (this.checkSameScore(this.boxScore)) {
+            console.log('格子满了，但有相邻且相同的数字', this.boxScore)
+            return
+        }
         this.isGameOver = true
         Laya.Scene.open("gameOver.scene", false)
     }
+
+    /**
+     * 检测二维数组是否还有相同且相邻的数字
+     */
+    checkSameScore(matrix) {  
+        const rows = matrix.length;  
+        const cols = matrix[0].length;  
+      
+        // 遍历二维数组的每个元素  
+        for (let i = 0; i < rows; i++) {  
+            for (let j = 0; j < cols; j++) {  
+                const currentElement = matrix[i][j];  
+      
+                // 检查上方元素  
+                if (i > 0 && matrix[i - 1][j] === currentElement) {  
+                    return true; // 如果找到相邻且相同的元素，返回true  
+                }  
+      
+                // 检查下方元素  
+                if (i < rows - 1 && matrix[i + 1][j] === currentElement) {  
+                    return true; // 如果找到相邻且相同的元素，返回true  
+                }  
+      
+                // 检查左方元素  
+                if (j > 0 && matrix[i][j - 1] === currentElement) {  
+                    return true; // 如果找到相邻且相同的元素，返回true  
+                }  
+      
+                // 检查右方元素  
+                if (j < cols - 1 && matrix[i][j + 1] === currentElement) {  
+                    return true; // 如果找到相邻且相同的元素，返回true  
+                }  
+            }  
+        }  
+      
+        // 如果没有找到相邻且相同的元素，返回false  
+        return false;  
+    }  
 
     // 再来一次
     againGame() {
@@ -369,7 +411,7 @@ export default class Game extends Laya.Script {
                 Laya.Scene.open("gameOver.scene", false)
             }
 
-            console.log('游戏结束直接返回', scenceList)
+            console.log('游戏结束直接返回', scenceList, gameOverScence)
             return
         }
 

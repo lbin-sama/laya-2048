@@ -3,7 +3,6 @@
 * @author lbin
 * @data: 2024-03-18 11:39
 */
-import { LoadingUI } from "./../ui/layaMaxUI";
 export default class LoadingRT extends Laya.Script {
 
     constructor() {
