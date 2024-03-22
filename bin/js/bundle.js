@@ -838,7 +838,7 @@
     GameConfig.width = 750;
     GameConfig.height = 1334;
     GameConfig.scaleMode ="fixedwidth";
-    GameConfig.screenMode = "none";
+    GameConfig.screenMode = "vertical";
     GameConfig.alignV = "top";
     GameConfig.alignH = "left";
     GameConfig.startScene = "gameOver.scene";
